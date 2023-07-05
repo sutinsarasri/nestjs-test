@@ -1,0 +1,78 @@
+@base_url = http://localhost:3000
+@post_api = {{base_url}}
+
+@bearerToken = Bearer {{login.response.body.access_token}}
+
+### Get test
+GET {{base_url}} HTTP/1.1
+
+### Get todo
+GET {{base_url}}/todo HTTP/1.1
+
+### post data
+POST {{base_url}}/todo HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Ellen McCarthy",
+    "email": "bovulo@zisite.ph"
+}
+
+### delete data
+DELETE {{base_url}}/todo/604249bd-acbf-4d72-bf23-9e6e7ea00a4b HTTP/1.1
+Content-Type: application/json
+
+
+### login
+# @name login
+POST {{base_url}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "john",
+    "password": "1234"
+}
+
+### Get profile
+GET http://localhost:3000/auth/profile HTTP/1.1
+Content-Type: application/json
+Authorization: {{bearerToken}}
+
+
+# ---- employee -----
+
+### Get employee
+GET {{base_url}}/employee HTTP/1.1
+
+### POST employee
+POST {{base_url}}/employee HTTP/1.1
+Content-Type: application/json
+
+{
+"FirstName":"Francis",
+"SurName":"Klein",
+"Designation":"64dd3814-2702-5c84-8421-0516ca715b41",
+"Email":"rulmiz@zi.lc",
+"Address":"1660 Dium Court",
+"Salary":"600000",
+"Gender":"Male"
+}
+
+
+### Get employee by id
+GET {{base_url}}/employee/64a55ca78601d2ccaf9a3987 HTTP/1.1
+
+### update employee
+PUT {{base_url}}/employee/64a55ca78601d2ccaf9a3987 HTTP/1.1
+Content-Type: application/json
+
+{
+"FirstName":"Hester",
+"SurName":"Nunez",
+"Designation":"fb81776a-6e1f-5f82-ad61-b14e33030505",
+"Email":"ja@subehi.gn",
+"Address":"929 Sutri Pike",
+"Salary":"700000",
+"Gender":"Male"
+}
+
